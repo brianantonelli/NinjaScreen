@@ -1,19 +1,21 @@
 #include <MeetAndroid.h>
 
-const int referenceVolts = 5;
-const int R1 = 3300;
-const int R2 = 2200;
-const int resistorFactor = 255 / (R2/(R1 + R2)); // 254.6
-const int highBeamPin = 10;
-const int leftSignalPin = 9;
-const int rightSignalPin = 8;
+const int rightSignalPin = 8;  // 0v off; ~10v on
+const int leftSignalPin  = 9;  // 0v off; ~10v on
+const int highBeamPin    = 10; // 0v off; 12v on
+const int neutralPin     = 11; // 10v in gear; 0v in neutral
+const int lowFuelPin     = 12; // ~4.5-5v low fuel; ?v full
+const int tachSignalPin  = 13; // 0v off; ~6.5v running
 
 void setup() {
   Serial.begin(9600); // USB
 //  Serial.begin(57600); // BLUETOOTH
-  pinMode(highBeamPin, INPUT);
-  pinMode(leftSignalPin, INPUT);
+  pinMode(highBeamPin,    INPUT);
+  pinMode(leftSignalPin,  INPUT);
   pinMode(rightSignalPin, INPUT);
+  pinMode(neutralPin,     INPUT);
+  pinMode(lowFuelPin,     INPUT);
+  pinMode(tachSignalPin,  INPUT);
 }
 
 void loop() {
@@ -30,14 +32,9 @@ void loop() {
   }
   
   val = analogRead(highBeamPin);
-  Serial.println(val);
   if(val > 100){
     Serial.println("HIGH BEAMS ARE ON!");
   }  
-  
 
-//  Serial.println(val);
-  //float volts = (val / resistorFactor) * referenceVolts;
   delay(500);
-  //Serial.println(volts);
 }
