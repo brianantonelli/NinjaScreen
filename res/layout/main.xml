@@ -1,12 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/translucent_blue"
     android:orientation="vertical" >
 
     <TextView
-        android:layout_width="fill_parent"
+        android:id="@+id/leftSignal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello" />
+        android:text=""
+        android:textSize="32px" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rightSignal"
+        android:text=""
+        android:textSize="32px" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/highBeams"
+        android:text=""
+        android:textSize="32px" />
+
+    <TextView
+        android:id="@+id/neutral"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:textSize="32px"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lowFuel"
+        android:text=""
+        android:textSize="32px" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tach"
+        android:text=""
+        android:textSize="32px" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fuelInj"
+        android:text=""
+        android:textSize="32px" />
+
+    <TextView
+        android:id="@+id/waterTemp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="32px" />
+
+    <TextView
+        android:id="@+id/oil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="32px"  />
+    
+    <TextView
+        android:id="@+id/speedo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="0 mph"
+        android:textSize="32px"  />
+        
+    <TextView
+        android:id="@+id/clock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="12:00 AM"
+        android:textSize="32px" />
 
 </LinearLayout>
