@@ -36,6 +36,7 @@ public class NinjaScreenActivity extends Activity {
 	private TextView oil;
 	private TextView waterTemp;
 	private TextView speedo;
+	private TextView outsideTemp;
 	private TextView clock;
 	
 	// GPS / Speedometer Stuff
@@ -63,6 +64,7 @@ public class NinjaScreenActivity extends Activity {
         oil = (TextView) findViewById(R.id.oil);
         waterTemp = (TextView) findViewById(R.id.waterTemp);
         speedo = (TextView) findViewById(R.id.speedo);
+        outsideTemp = (TextView) findViewById(R.id.outsideTemp);
         clock = (TextView) findViewById(R.id.clock);
         
         // Kick off the GPS / Speedo stuff
@@ -134,10 +136,11 @@ public class NinjaScreenActivity extends Activity {
 	    	String data = null;
 	    	final String address = intent.getStringExtra(AmarinoIntent.EXTRA_DEVICE_ADDRESS);
 	    	
-	    	Log.d(TAG, "Received Event From: " + address);
 	    	
 	    	final int dataType = intent.getIntExtra(AmarinoIntent.EXTRA_DATA_TYPE, -1);
 			
+	    	Log.d(TAG, "Received Event From: " + address + " with data type = " + dataType);
+	    	
 	    	if(dataType == AmarinoIntent.STRING_EXTRA){
 	    		data = intent.getStringExtra(AmarinoIntent.EXTRA_DATA);
 	    		
@@ -148,8 +151,8 @@ public class NinjaScreenActivity extends Activity {
 	    			}
 	    			else{
 	    				String[] peices = data.substring(1, data.length()-1).split("\\|");
-	    				if(peices.length != 9){
-	    					Log.e(TAG, "Wrong amount of peices! Expected 9 but got: " + peices.length);
+	    				if(peices.length != 10){
+	    					Log.e(TAG, "Wrong amount of peices! Expected 10 but got: " + peices.length);
 	    					return;
 	    				}
 	    				rightSignal.setText("Right Turn Signal: " + ("1".equals(peices[0]) ? "on" : "off"));
@@ -161,6 +164,7 @@ public class NinjaScreenActivity extends Activity {
 	    				fuelInj.setText("Fuel Injectors: " + ("1".equals(peices[6]) ? "trouble!!!" : "okay"));
 	    				oil.setText("Oil: " + ("1".equals(peices[7]) ? "trouble!!!" : "okay"));
 	    				waterTemp.setText("Water Temperature: " + ("1".equals(peices[8]) ? "trouble!!!" : "okay"));
+	    				outsideTemp.setText("Outside Temperature: " + peices[9]);
 	    				clock.setText(new SimpleDateFormat("hh:mm aaa").format(new Date()));
 	    			}
 	    		}
